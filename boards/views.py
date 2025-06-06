@@ -1,14 +1,18 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.pagination import PageNumberPagination
 from .models import Board, Label, Card, Comment, List
 from .serializers import BoardSerializer, LabelSerializer, CardSerializer, CommentSerializer, ListSerializer
 from django.views.generic import TemplateView
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    pagination_class = PageNumberPagination
+    page_size = 10
 
     def permission_create(self, serializer):
         serializer.save(owner=self.request.user)
