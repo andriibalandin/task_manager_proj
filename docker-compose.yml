@@ -6,6 +6,7 @@ services:
       - "8000:8000"
     environment:
       - DEBUG=True
+      - DJANGO_SETTINGS_MODULE=task_manager_proj.settings
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}

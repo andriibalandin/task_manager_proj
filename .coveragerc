@@ -1,0 +1,15 @@
+[run]
+sourse = 
+    boards
+    task_manager_proj
+omit = 
+    */migrations/*
+    */tests/*
+    */__init__.py
+    manage.py
+    */wsgi.py
+    */asgi.py
+
+[report]
+show_missing = True
+skip_covered = False
